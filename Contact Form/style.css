@@ -1,0 +1,284 @@
+:root {
+  --bg: #f9f9f9;
+  --text: #222;
+  --card: #fff;
+  --border: #ccc;
+  --primary: #0077cc;
+  --error: #e63946;
+  --success: #2a9d8f;
+  --progress-bg: #ddd;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #f0f0f0;
+  --card: #1e1e1e;
+  --border: #444;
+  --primary: #64b5f6;
+  --error: #ff6b6b;
+  --success: #81c784;
+  --progress-bg: #333;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  transition: all 0.3s ease;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-info {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--text);
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: 0.4s;
+}
+.slider:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: var(--primary);
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+.container {
+  background: var(--card);
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.floating-label {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.floating-label input,
+.floating-label textarea {
+  width: 100%;
+  padding: 14px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text);
+  font-size: 15px;
+}
+
+.floating-label label {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--card);
+  padding: 0 6px;
+  transition: 0.2s;
+  color: #888;
+  pointer-events: none;
+}
+
+.floating-label input:focus + label,
+.floating-label textarea:focus + label,
+.floating-label input:not(:placeholder-shown) + label,
+.floating-label textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 10px;
+  font-size: 12px;
+  color: var(--primary);
+}
+
+.tooltip-icon {
+  margin-right: 5px;
+  color: var(--primary);
+  cursor: help;
+}
+
+.error {
+  color: var(--error);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.char-count {
+  font-size: 12px;
+  text-align: right;
+  margin-top: 5px;
+  color: var(--border);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--progress-bg);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress {
+  height: 100%;
+  background: var(--primary);
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #fff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  display: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.reset-btn {
+  background: #999;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--success);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.checkbox-group input[type="checkbox"] {
+  transform: scale(1.2);
+}
+
+.checkbox-group a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.checkbox-group a:hover {
+  text-decoration: underline;
+}
+
+/* Success animation */
+.success-animation {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: fixed;
+  top: 0; left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.success-animation svg {
+  width: 80px;
+  height: 80px;
+  stroke: #00e676;
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: draw 0.8s ease forwards;
+  margin-bottom: 12px;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
